@@ -98,6 +98,13 @@
     <Content Include="Content\preboot.css" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\filament-group\ajaxInclude.js" />
+    <Content Include="Scripts\filament-group\ajaxInclude.min.js" />
+    <Content Include="Scripts\filament-group\ajaxIncludePlugins.js" />
+    <Content Include="Scripts\filament-group\ajaxIncludePlugins.min.js" />
+    <Content Include="Scripts\filament-group\loadCSS.js" />
+    <Content Include="Scripts\filament-group\loadCSS.min.js" />
+    <Content Include="Scripts\filament-group\loadJS.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -110,6 +117,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CssController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -122,8 +130,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\_Layouts.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Css\InlineCriticalCss.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -136,6 +144,12 @@
     <Folder Include="css\" />
     <Folder Include="img\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebPerformance.BundlingExtensions\WebPerformance.BundlingExtensions.csproj">
+      <Project>{02315907-0c5f-43ca-b297-ece26618b51d}</Project>
+      <Name>WebPerformance.BundlingExtensions</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -150,7 +164,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>63633</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:62675/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

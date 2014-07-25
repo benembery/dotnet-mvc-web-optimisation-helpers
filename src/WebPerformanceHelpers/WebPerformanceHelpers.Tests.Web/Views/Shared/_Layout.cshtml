@@ -3,9 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>@ViewBag.Title - MVC Web Performance Helpers</title>
+    <title>@ViewBag.Title - MVC Web Performance Helpers</title>
 
-    @Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/js/asset-loader")
+    <script>
+        loadCSS('@Styles.Url("~/bundles/css/theme")');
+    </script>
+    @BundleHelper.RenderStylesInline("~/bundles/css")
 </head>
 <body>
     <header class="container">
@@ -15,5 +19,8 @@
     <div class="container">
         @RenderBody()
     </div>
+    <noscript>
+        @Styles.Render("~/bundles/css/theme")
+    </noscript>
 </body>
 </html>

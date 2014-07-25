@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPerformanceHelpers.Core"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPerformanceHelpers.Tests.Web", "WebPerformanceHelpers.Tests.Web\WebPerformanceHelpers.Tests.Web.csproj", "{C5DCB376-5E03-4945-BD30-A87F412B2D92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPerformance.BundlingExtensions", "WebPerformance.BundlingExtensions\WebPerformance.BundlingExtensions.csproj", "{02315907-0C5F-43CA-B297-ECE26618B51D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{C5DCB376-5E03-4945-BD30-A87F412B2D92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5DCB376-5E03-4945-BD30-A87F412B2D92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5DCB376-5E03-4945-BD30-A87F412B2D92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02315907-0C5F-43CA-B297-ECE26618B51D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02315907-0C5F-43CA-B297-ECE26618B51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02315907-0C5F-43CA-B297-ECE26618B51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02315907-0C5F-43CA-B297-ECE26618B51D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
