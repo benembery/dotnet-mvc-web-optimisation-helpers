@@ -14,7 +14,10 @@ namespace WebPerformanceHelpers.Tests.Web.App_Start
 
             bundles.Add(new StyleBundle("~/bundles/css").Include("~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/bundles/css/theme").Include("~/Content/preboot.css"));
+            bundles.Add(new StyleBundle("~/bundles/css/theme")
+                .Include(new []{"~/Content/preboot.css", "~/Content/site-theme.css"}));
+
+            bundles.Add(new StyleBundle("~/bundles/css/code-blocks").Include("~/Content/code-blocks.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/js/asset-loader")
                 .Include(new[] { "~/Scripts/filament-group/loadCSS.js", "~/Scripts/filament-group/loadJS.js" }));
@@ -25,6 +28,10 @@ namespace WebPerformanceHelpers.Tests.Web.App_Start
                 jQuery.CdnFallbackExpression = "window.jQuery";
 
             bundles.Add(jQuery);
+
+
+            bundles.Add(new ScriptBundle("~/bundles/js/ajax-include")
+                .Include(new [] {"~/Scripts/filament-group/ajaxInclude.js", "~/Scripts/filament-group/ajaxIncludePlugins.js"}));
 
             BundleTable.EnableOptimizations = true;
         }

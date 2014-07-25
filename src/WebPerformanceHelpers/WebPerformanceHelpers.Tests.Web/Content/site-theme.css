@@ -1,0 +1,29 @@
+﻿pre.prettyprint {
+    padding-left: 30px;
+    clear: both;
+    *zoom: 1;
+}
+/*
+.prettyprint:hover {
+
+    position: absolute;
+    left: 15px;
+    right: 15px;
+
+     -webkit-transition: all .3s ease-out 1s;
+    -moz-transition: all .3s ease-out 1s;
+    -o-transition: all .3s ease-out 1s;
+    transition: all .3s ease-out 1s;
+}
+
+.prettyprint:before,
+.prettyprint:after {
+    content: " ";
+    position: static;
+    display: table;
+}
+
+.prettyprint:after {
+    clear: both;
+}
+    */

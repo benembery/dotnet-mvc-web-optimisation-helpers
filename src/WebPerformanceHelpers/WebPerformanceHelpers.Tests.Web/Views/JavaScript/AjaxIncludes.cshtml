@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "AjaxIncludes";
+}
+<section>
+    <h1>Ajax Includes</h1>
+    <p>Inlcude non-essential contents via ajax.</p>
+    <aside data-replace="@Url.Action("Replace", "AjaxIncludeExamples")"></aside>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/js/ajax-include")
+    <script>
+        +(function($) {
+            $('[data-replace]').ajaxInclude({ proxy: @Url.Action("Proxy","AjaxIncludeExamples") });
+        })(jQuery);
+    </script>
+}

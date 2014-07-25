@@ -14,7 +14,7 @@
 <body>
     <header class="container">
         <h1>MVC Web Performance Helpers Demos</h1>
-
+        @Html.Action("GoBackLink", "Home")
     </header>
 
     <div class="container">
@@ -24,5 +24,6 @@
         @Styles.Render("~/bundles/css/theme")
     </noscript>
     @Scripts.Render("~/bundles/js/jquery")
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
