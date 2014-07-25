@@ -1,0 +1,15 @@
+﻿.container {
+    margin-left: 15px;
+}
+
+
+@media screen and (min-width: 500px) {
+    .container {
+        margin-left: 80px;
+        margin-top: 80px;
+    }
+}
+
+h1 {
+    color: #999;
+}
