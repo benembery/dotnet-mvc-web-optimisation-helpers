@@ -19,6 +19,12 @@ namespace WebPerformanceHelpers.Tests.Web.App_Start
             bundles.Add(new ScriptBundle("~/bundles/js/asset-loader")
                 .Include(new[] { "~/Scripts/filament-group/loadCSS.js", "~/Scripts/filament-group/loadJS.js" }));
 
+            var jQuery = new ScriptBundle("~/bundles/js/jquery", "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js")
+                .Include("~/Scripts/jquery-{version}.js");
+
+                jQuery.CdnFallbackExpression = "window.jQuery";
+
+            bundles.Add(jQuery);
 
             BundleTable.EnableOptimizations = true;
         }
