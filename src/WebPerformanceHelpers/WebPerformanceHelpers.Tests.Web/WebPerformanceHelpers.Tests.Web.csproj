@@ -118,6 +118,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AjaxIncludeExamplesController.cs" />
     <Compile Include="Controllers\CssController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JavaScriptController.cs" />
@@ -156,6 +157,10 @@
     <ProjectReference Include="..\WebPerformance.BundlingExtensions\WebPerformance.BundlingExtensions.csproj">
       <Project>{02315907-0c5f-43ca-b297-ece26618b51d}</Project>
       <Name>WebPerformance.BundlingExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebPerformanceHelpers.Core\WebPerformanceHelpers.Core.csproj">
+      <Project>{d4054e03-116d-4556-a268-f203d25e5e0a}</Project>
+      <Name>WebPerformanceHelpers.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

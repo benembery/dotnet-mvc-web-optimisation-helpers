@@ -11,7 +11,7 @@
     @Scripts.Render("~/bundles/js/ajax-include")
     <script>
         +(function($) {
-            $('[data-replace]').ajaxInclude({ proxy: @Url.Action("Proxy","AjaxIncludeExamples") });
+            $('[data-replace]').ajaxInclude({ proxy: '@Url.Action("Proxy","AjaxIncludeExamples", new{wrap= true})&includes=' });
         })(jQuery);
     </script>
 }
