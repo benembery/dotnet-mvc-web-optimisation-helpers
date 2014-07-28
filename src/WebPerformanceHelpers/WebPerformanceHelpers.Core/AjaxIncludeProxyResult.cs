@@ -42,14 +42,19 @@ namespace WebPerformanceHelpers.Core
 
             var response = string.Empty;
 
-            foreach (var requestUrl in requestsList)
+            using (var client = new WebClient())
             {
-                Uri uri = new Uri(absoluteHost, requestUrl);
-                var requestResponse = ExecuteRequest(uri.AbsoluteUri);
-
-                if (requestResponse != null)
+                //TODO create task array to handle all requests in parallel.
+                foreach (var requestUrl in requestsList)
                 {
-                    response += WrapInTag(requestResponse, requestUrl);
+                    Uri uri = new Uri(absoluteHost, requestUrl);
+                    
+                    var requestResponse = client.DownloadString(uri); //ExecuteRequest(uri.AbsoluteUri);
+                    
+                    if (!string.IsNullOrWhiteSpace(requestResponse))
+                    {
+                        response += WrapInTag(requestResponse, requestUrl);
+                    }
                 }
             }
 
@@ -64,24 +69,6 @@ namespace WebPerformanceHelpers.Core
             tag.InnerHtml = requestResponse.Replace(Environment.NewLine, string.Empty); // Remove new lines from response to side step ajax-include regex bug.
 
             return tag.ToString();
-        }
-
-        private static string ExecuteRequest(string url)
-        {
-            string content;
-            var req = HttpWebRequest.Create(url);
-
-            req.Method = "GET";
-            req.Credentials = CredentialCache.DefaultCredentials;
-
-            using (var response = (HttpWebResponse)req.GetResponse())
-            using (var dataStream = response.GetResponseStream())
-            {
-                var reader = new StreamReader(dataStream);
-                content = reader.ReadToEnd();
-            }
-
-            return content;
         }
     }
 }
