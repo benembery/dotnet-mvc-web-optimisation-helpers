@@ -48,7 +48,6 @@ namespace WebPerformanceHelpers.Core
             var query = string.IsNullOrWhiteSpace(requestUri.Query) ? null : requestUri.Query.Substring(1);
             
             var request = new HttpRequest(null, requestUri.AbsoluteUri, query);
-
             var response = new HttpResponse(writer);
             var context = new HttpContext(request, response);
             var contextBase = new HttpContextWrapper(context);
