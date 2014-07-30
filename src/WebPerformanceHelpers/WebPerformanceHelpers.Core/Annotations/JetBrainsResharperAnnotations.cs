@@ -9,7 +9,7 @@
 // ReSharper disable MemberCanBeProtected.Global
 // ReSharper disable InconsistentNaming
 
-namespace WebPerformanceHelpers.Core
+namespace WebPerformanceHelpers.Annotations
 {
     /// <summary>
     /// Indicates that the value of the marked element could be <c>null</c> sometimes,

@@ -1,7 +1,8 @@
 ﻿using System.IO;
 using System.Web.Mvc;
+using WebPerformanceHelpers.Annotations;
 
-namespace WebPerformanceHelpers.Core
+namespace WebPerformanceHelpers.Extensions
 {
     public static class RenderViewExtensions
     {

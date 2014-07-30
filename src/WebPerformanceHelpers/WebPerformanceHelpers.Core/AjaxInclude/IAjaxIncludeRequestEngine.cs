@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace WebPerformanceHelpers.Core
+namespace WebPerformanceHelpers.AjaxInclude
 {
     public interface IAjaxIncludeRequestEngine
     {

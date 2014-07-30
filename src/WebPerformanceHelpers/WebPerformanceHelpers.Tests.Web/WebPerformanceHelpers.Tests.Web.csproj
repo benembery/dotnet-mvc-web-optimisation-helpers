@@ -142,6 +142,7 @@
     <Content Include="Views\AjaxIncludeExamples\Replace.cshtml" />
     <Content Include="Views\Home\GoBackLink.cshtml" />
     <Content Include="Views\Shared\_PrettyPrintScripts.cshtml" />
+    <Content Include="Views\JavaScript\InlineCriticalScript.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -156,13 +157,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebPerformance.BundlingExtensions\WebPerformance.BundlingExtensions.csproj">
-      <Project>{02315907-0c5f-43ca-b297-ece26618b51d}</Project>
-      <Name>WebPerformance.BundlingExtensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebPerformanceHelpers.Core\WebPerformanceHelpers.Core.csproj">
+    <ProjectReference Include="..\WebPerformanceHelpers.Core\WebPerformanceHelpers.csproj">
       <Project>{d4054e03-116d-4556-a268-f203d25e5e0a}</Project>
-      <Name>WebPerformanceHelpers.Core</Name>
+      <Name>WebPerformanceHelpers</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

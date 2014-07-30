@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace WebPerformanceHelpers.Core
+namespace WebPerformanceHelpers.Extensions
 {
     public static class RequestExtensions
     {

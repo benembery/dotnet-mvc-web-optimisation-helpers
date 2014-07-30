@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace WebPerformanceHelpers.Core
+namespace WebPerformanceHelpers.AjaxInclude
 {
     public abstract class AjaxIncludeEngineBase
     {

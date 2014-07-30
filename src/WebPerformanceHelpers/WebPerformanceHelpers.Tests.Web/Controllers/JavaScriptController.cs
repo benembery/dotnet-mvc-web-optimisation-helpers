@@ -7,6 +7,12 @@ namespace WebPerformanceHelpers.Tests.Web.Controllers
     [RoutePrefix("js")]
     public class JavaScriptController : Controller
     {
+        [Route("inline-critical-javascript")]
+        public ActionResult InlineCriticalScript()
+        {
+            return View();
+        }
+
         [Route("cdn-script-fallback")]
         public ActionResult CdnScriptFallback()
         {

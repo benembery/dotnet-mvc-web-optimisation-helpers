@@ -4,12 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - MVC Web Performance Helpers</title>
-
-    @Scripts.Render("~/bundles/js/asset-loader")
+    @ScriptsHelper.RenderScriptInline("~/bundles/js/asset-loader")
     <script>
         loadCSS('@Styles.Url("~/bundles/css/theme")');
     </script>
-    @BundleHelper.RenderStylesInline("~/bundles/css")
+    @StylesHelper.RenderStylesInline("~/bundles/css")
 </head>
 <body>
     <header class="container">

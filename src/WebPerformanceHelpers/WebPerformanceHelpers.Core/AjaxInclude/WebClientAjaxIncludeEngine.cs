@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
-namespace WebPerformanceHelpers.Core
+namespace WebPerformanceHelpers.AjaxInclude
 {
     public class WebClientAjaxIncludeEngine : AjaxIncludeEngineBase, IAjaxIncludeRequestEngine
     {

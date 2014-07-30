@@ -1,10 +1,6 @@
-﻿using System.CodeDom;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using System.Web.SessionState;
+﻿using System.Web.Mvc;
 
-namespace WebPerformanceHelpers.Core
+namespace WebPerformanceHelpers.AjaxInclude
 {
     public class AjaxIncludeProxyResult : ActionResult
     {

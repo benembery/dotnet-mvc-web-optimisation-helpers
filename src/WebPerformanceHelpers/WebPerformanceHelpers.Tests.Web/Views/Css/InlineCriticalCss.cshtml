@@ -1,14 +1,11 @@
-﻿@using Microsoft.Ajax.Utilities
-@using WebPerformance.BundlingExtensions
-
-@{
-    ViewBag.Title = "InlineCriticalCss";
+﻿@{
+    ViewBag.Title = "Inline Critical CSS";
 }
 <section>
     <h1>Inline Critical CSS</h1>
     <p>As recommende by google</p>
     <pre class="prettyprint linenums lang-css">
-@Html.Encode(@BundleHelper.RenderStylesInline("~/bundles/css"))</pre>
+@Html.Encode(StylesHelper.RenderStylesInline("~/bundles/css"))</pre>
 </section>
 
 @section Scripts

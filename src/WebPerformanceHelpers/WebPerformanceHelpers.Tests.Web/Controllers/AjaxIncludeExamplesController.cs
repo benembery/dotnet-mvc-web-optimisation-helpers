@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using WebPerformanceHelpers.Core;
+using WebPerformanceHelpers.AjaxInclude;
 
 namespace WebPerformanceHelpers.Tests.Web.Controllers
 {
