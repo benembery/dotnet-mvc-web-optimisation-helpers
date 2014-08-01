@@ -144,6 +144,10 @@
     <Content Include="Views\Home\GoBackLink.cshtml" />
     <Content Include="Views\Shared\_PrettyPrintScripts.cshtml" />
     <Content Include="Views\JavaScript\InlineCriticalScript.cshtml" />
+    <Content Include="Views\AjaxIncludeExamples\After.cshtml" />
+    <Content Include="Views\AjaxIncludeExamples\Before.cshtml" />
+    <Content Include="Views\AjaxIncludeExamples\Append.cshtml" />
+    <Content Include="Views\AjaxIncludeExamples\Prepend.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

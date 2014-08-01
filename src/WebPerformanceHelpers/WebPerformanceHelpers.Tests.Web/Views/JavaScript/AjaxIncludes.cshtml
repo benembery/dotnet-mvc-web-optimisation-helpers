@@ -5,12 +5,20 @@
     <h1>Ajax Includes</h1>
     <p>Inlcude non-essential contents via ajax.</p>
     <aside data-replace="@Url.Action("Replace", "AjaxIncludeExamples")"></aside>
+    <h2 data-after="@Url.Action("After", "AjaxIncludeExamples")">Something for later</h2>
+    <p data-before="@Url.Action("Before", "AjaxIncludeExamples")">Before you see me you should see more</p>
+    <aside data-append="@Url.Action("Append", "AjaxIncludeExamples")">
+        <p>This and something more.</p>
+    </aside>
+    <aside data-prepend="@Url.Action("Prepend", "AjaxIncludeExamples")">
+        <p>I'm less important but I'm not ajax.</p>
+    </aside>
 </section>
 @section Scripts {
     @Scripts.Render("~/bundles/js/ajax-include")
     <script>
         +(function($) {
-            $('[data-replace]').ajaxInclude({ proxy: '@Url.Action("Proxy","AjaxIncludeExamples", new{wrap= true})&includes=' });
+            $('[data-replace],[data-before],[data-after],[data-append],[data-prepend]').ajaxInclude({ proxy: '@Url.Action("Proxy","AjaxIncludeExamples", new{wrap= true})&includes=' });
         })(jQuery);
     </script>
 }
