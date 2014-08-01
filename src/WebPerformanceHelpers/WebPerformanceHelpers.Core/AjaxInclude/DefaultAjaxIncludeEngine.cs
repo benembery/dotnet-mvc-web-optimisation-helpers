@@ -24,7 +24,7 @@ namespace WebPerformanceHelpers.AjaxInclude
             var factory = ControllerBuilder.Current.GetControllerFactory();
 
             var response = string.Empty;
-            // TODO create multiple threads to execute actions more quickly.
+            // TODO create multiple threads to execute actions in parallel.
             foreach (var requestUrl in request.RequestsList)
             {
                 var uri = new Uri(host, requestUrl);

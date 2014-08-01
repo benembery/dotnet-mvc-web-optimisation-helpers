@@ -105,6 +105,7 @@
     <Content Include="Scripts\filament-group\ajaxInclude.min.js" />
     <Content Include="Scripts\filament-group\ajaxIncludePlugins.js" />
     <Content Include="Scripts\filament-group\ajaxIncludePlugins.min.js" />
+    <Content Include="Scripts\filament-group\Enhance.custom.js" />
     <Content Include="Scripts\filament-group\loadCSS.js" />
     <Content Include="Scripts\filament-group\loadCSS.min.js" />
     <Content Include="Scripts\filament-group\loadJS.js" />

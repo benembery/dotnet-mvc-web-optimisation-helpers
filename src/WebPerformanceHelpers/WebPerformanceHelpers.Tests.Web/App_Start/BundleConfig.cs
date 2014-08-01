@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace WebPerformanceHelpers.Tests.Web.App_Start
 {
@@ -33,7 +29,7 @@ namespace WebPerformanceHelpers.Tests.Web.App_Start
             bundles.Add(new ScriptBundle("~/bundles/js/ajax-include")
                 .Include(new [] {"~/Scripts/filament-group/ajaxInclude.js", "~/Scripts/filament-group/ajaxIncludePlugins.js"}));
 
-            BundleTable.EnableOptimizations = true;
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }
