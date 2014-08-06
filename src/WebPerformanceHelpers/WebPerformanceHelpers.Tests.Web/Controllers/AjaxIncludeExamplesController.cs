@@ -3,6 +3,7 @@ using WebPerformanceHelpers.AjaxInclude;
 
 namespace WebPerformanceHelpers.Tests.Web.Controllers
 {
+    [OutputCache(CacheProfile = "Static")]
     [RoutePrefix("ajax-include-examples")]
     public class AjaxIncludeExamplesController : Controller
     {

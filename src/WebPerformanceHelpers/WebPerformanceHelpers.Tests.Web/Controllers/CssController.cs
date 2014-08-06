@@ -2,6 +2,7 @@
 
 namespace WebPerformanceHelpers.Tests.Web.Controllers
 {
+    [OutputCache(CacheProfile = "Static")]
     [RoutePrefix("css")]
     public class CssController : Controller
     {
