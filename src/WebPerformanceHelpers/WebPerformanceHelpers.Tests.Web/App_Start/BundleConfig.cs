@@ -15,6 +15,8 @@ namespace WebPerformanceHelpers.Tests.Web.App_Start
 
             bundles.Add(new StyleBundle("~/bundles/css/code-blocks").Include("~/Content/code-blocks.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/js/enhance").Include(new[] { "~/Scripts/filament-group/enhance.js" }));
+
             bundles.Add(new ScriptBundle("~/bundles/js/asset-loader")
                 .Include(new[] { "~/Scripts/filament-group/loadCSS.js", "~/Scripts/filament-group/loadJS.js" }));
 

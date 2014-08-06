@@ -1,5 +1,6 @@
 ﻿/*! EnhanceJS: a progressive enhancement boilerplate. Copyright 2014 @scottjehl, Filament Group, Inc. Licensed MIT */
-(function (window, options, undefined) {
+
+(function (window, undefined) {
 
     // Enable JS strict mode
     "use strict";
@@ -12,28 +13,22 @@
 		docElem = doc.documentElement,
 		head = doc.head || doc.getElementsByTagName("head")[0],
 		// this references a meta tag's name whose content attribute should define the path to the full CSS file for the site
-		fullCSSKey = options['fullcss'] != '' ? options['fullCSS'] : "fullcss",
+		fullCSSKey = "fullcss",
 		// this references a meta tag's name whose content attribute should define the path to the enhanced JS file for the site (delivered to qualified browsers)
-		fullJSKey = options['fullJS'] != '' ? options['fullJS'] : "fullJS",
+		fullJSKey = "fulljs",
 		// this references a meta tag's name whose content attribute should define the path to the custom fonts file for the site (delivered to qualified browsers)
 		fontsKey = "fonts",
 		// classes to be added to the HTML element in qualified browsers
-		htmlClasses = ["enhanced"],
-		supportsEventListner = "addEventListener" in doc;
-
+		htmlClasses = ["enhanced"];
 
     /* Some commonly used functions - delete anything you don't need! */
 
     // loadJS: load a JS file asynchronously. Included from https://github.com/filamentgroup/loadJS/
-    function loadJS(src, callback) {
+    function loadJS(src) {
         var ref = window.document.getElementsByTagName("script")[0];
         var script = window.document.createElement("script");
         script.src = src;
         ref.parentNode.insertBefore(script, ref);
-        if (typeof callback == "function") {
-            (!supportsEventListner) ? callback(null, null) :
-                script.addEventListener('load', function (e) { callback(null, e); }, false);
-        }
         return script;
     }
 
@@ -73,7 +68,7 @@
         }
         return meta;
     }
-
+    
     // expose it
     enhance.getMeta = getMeta;
 
@@ -111,18 +106,17 @@
     /* Enhancements for all browsers - qualified or not */
 
     /* Load non-critical CSS async on first visit:
-       On first visit to the site, the critical CSS for each template should be inlined in the head, while the full CSS for the site should be requested async and cached for later use.
-       A meta tag with a name matching the fullCSSKey should have a content attribute referencing the path to the full CSS file for the site.
-       If no cookie is set to specify that the full CSS has already been fetched, load it asynchronously and set the cookie.
-       Once the cookie is set, the full CSS is assumed to be in cache, and the server-side templates should reference the full CSS directly from the head of the page with a link element, in place of inline critical styles.
-    */
+		On first visit to the site, the critical CSS for each template should be inlined in the head, while the full CSS for the site should be requested async and cached for later use.
+		A meta tag with a name matching the fullCSSKey should have a content attribute referencing the path to the full CSS file for the site.
+		If no cookie is set to specify that the full CSS has already been fetched, load it asynchronously and set the cookie.
+		Once the cookie is set, the full CSS is assumed to be in cache, and the server-side templates should reference the full CSS directly from the head of the page with a link element, in place of inline critical styles.
+		*/
+
     var fullCSS = getMeta(fullCSSKey);
     if (fullCSS && !cookie(fullCSSKey)) {
-        loadCSS(fullCSS.content, null, null, function () {
-            // set cookie to mark this file fetched
-            cookie(fullCSSKey, "true", 7);
-        });
-
+        loadCSS(fullCSS.content);
+        // set cookie to mark this file fetched
+        cookie(fullCSSKey, "true", 7);
     }
 
     /* Enhancements for qualified browsers - “Cutting the Mustard”
@@ -160,4 +154,4 @@
         loadCSS(fonts.content);
     }
 
-}(this, {}));
+}(this));

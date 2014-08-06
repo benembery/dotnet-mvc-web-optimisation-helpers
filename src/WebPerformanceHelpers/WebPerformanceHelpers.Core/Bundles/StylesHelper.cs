@@ -8,7 +8,7 @@ namespace WebPerformanceHelpers.Bundles
     public static class StylesHelper
     {
         private const string InlineStyleFormat = "<style>{0}</style>";
-        private const string LoadCssAsyncWithNoScriptFallback = "<meta key=\"{0}\" content=\"{1}\" />{2}<noscript>{3}</noscript>";
+        private const string LoadCssAsyncWithNoScriptFallback = "<meta name=\"{0}\" content=\"{1}\" />{2}<noscript>{3}</noscript>";
         
         public static IHtmlString RenderStylesInline(string virtualPath)
         {

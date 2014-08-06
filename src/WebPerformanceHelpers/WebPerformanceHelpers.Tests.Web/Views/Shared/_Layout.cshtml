@@ -1,27 +1,28 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    @StylesHelper.RenderCriticalAndFullCss("~/bundles/css", "~/bundles/css/theme", "fullcss")
+    @ScriptsHelper.RenderScriptInline("~/bundles/js/enhance")
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - MVC Web Performance Helpers</title>
-    @ScriptsHelper.RenderScriptInline("~/bundles/js/asset-loader")
-    <script>
-        loadCSS('@Styles.Url("~/bundles/css/theme")');
-    </script>
-    @StylesHelper.RenderStylesInline("~/bundles/css")
 </head>
 <body>
-    <header class="container">
-        <h1>MVC Web Performance Helpers Demos</h1>
-        @Html.Action("GoBackLink", "Home")
+    <header class="header">
+        <div class="container">
+            <h1>MVC Web Performance Helpers Demos</h1>
+            @Html.Action("GoBackLink", "Home")
+            <a href="https://github.com/benembery/MVC-Web-Performance-Helpers" class="btn">View on GitHub</a>
+        </div>
     </header>
-
     <div class="container">
         @RenderBody()
     </div>
-    <noscript>
-        @Styles.Render("~/bundles/css/theme")
-    </noscript>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Ben Embery 2014</p>
+        </div>
+    </footer>
     @Scripts.Render("~/bundles/js/jquery")
     @RenderSection("Scripts", required: false)
 </body>
