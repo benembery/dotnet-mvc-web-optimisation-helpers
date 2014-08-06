@@ -10,11 +10,9 @@
     <aside data-append="@Url.Action("Append", "AjaxIncludeExamples")">
         <p>This and something more.</p>
     </aside>
-    <aside data-prepend="@Url.Action("Prepend", "AjaxIncludeExamples")">
-        <p>I'm less important but I'm not ajax.</p>
-    </aside>
 </section>
 @section Scripts {
+        @Scripts.Render("~/bundles/js/jquery")
     @Scripts.Render("~/bundles/js/ajax-include")
     <script>
         +(function($) {

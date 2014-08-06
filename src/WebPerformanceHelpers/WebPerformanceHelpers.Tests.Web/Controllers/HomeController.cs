@@ -10,6 +10,7 @@ namespace WebPerformanceHelpers.Tests.Web.Controllers
     {
         //
         // GET: /Home/
+        [OutputCache(Duration = 900)]
         public ActionResult Index()
         {
             return View();

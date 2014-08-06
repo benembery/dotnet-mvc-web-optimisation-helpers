@@ -35,10 +35,5 @@ namespace WebPerformanceHelpers.Tests.Web.Controllers
         {
             return PartialView();
         }
-
-        public ActionResult Prepend()
-        {
-            return PartialView();
-        }
     }
 }
