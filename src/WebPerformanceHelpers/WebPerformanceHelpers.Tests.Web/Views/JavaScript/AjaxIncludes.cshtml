@@ -2,21 +2,40 @@
     ViewBag.Title = "AjaxIncludes";
 }
 <section>
-    <h1>Ajax Includes</h1>
-    <p>Inlcude non-essential contents via ajax.</p>
-    <aside data-replace="@Url.Action("Replace", "AjaxIncludeExamples")"></aside>
-    <h2 data-after="@Url.Action("After", "AjaxIncludeExamples")">Something for later</h2>
-    <p data-before="@Url.Action("Before", "AjaxIncludeExamples")">Before you see me you should see more</p>
-    <aside data-append="@Url.Action("Append", "AjaxIncludeExamples")">
-        <p>This and something more.</p>
+    <h1>Ajax Include Pattern</h1>
+    <p>This is another pattern from the <a href="http://www.filamentgroup.com">Filamment Group</a> in the form of a jQuery plugin. It allows us to include non-essential page content via ajax, thus improving intial content load for all browsers and depending on your implementation leaving enhanced content to more capable or feature-rich devices.</p>
+    <p>Documentation for the Ajax include pattern can be found at the <a href="https://gituhub.com/filamentgroup/Ajax-Include-Pattern">GitHub repo</a>.</p>
+    
+    <h2>The Concept</h2>
+    <p>The plugin allows for 4 main methods <code>data-replace</code>, <code>data-after</code>, <code>data-before</code>, and <code>data-append</code>. In addition to this, the plugin supports bundling all of the individual includes on a page into a single http request that will be parsed and executed on completion.</p>
+    <p>In the MVC Web Performance helpers I have implemented a proxy that accepts ajax include requests, transforms them and executes them using the MVC pipeline.</p>
+    
+    <h2>Usage</h2>
+    <p>Usage of the plugin is already well documented on the Ajax Include GitHub repo. For the proxy in ASP.Net MVC only the following is needed.</p>
+    <pre class="prettyprint">
+public ActionResult Proxy(AjaxIncludeProxyRequest proxyRequest)
+{
+    return new AjaxIncludeProxyResult(proxyRequest);
+}
+</pre>
+    
+    <h3 data-after="@Url.Action("After", "AjaxIncludeExamples")">Example</h3>
+    <p data-replace="@Url.Action("Replace", "AjaxIncludeExamples")">
+        The only thing that would make this example better, would be a picture of a cat.
+    </p>
+    <hr />
+    <aside class="cf">
+        <h4 data-before="@Url.Action("Before","AjaxIncludeExamples")">One last thing</h4>
+        <p>It&rsquo;s worth noting that without the work of <a href="https://twitter.com/scottjehl">@@scottjehl</a> and the <a href="http://filamentgroup.com/">Filament Group</a> my work would not exist. You should buy his book &quot;Responsible Responsive Design&quot;. </p>
     </aside>
 </section>
 @section Scripts {
-        @Scripts.Render("~/bundles/js/jquery")
+    @Scripts.Render("~/bundles/js/jquery")
     @Scripts.Render("~/bundles/js/ajax-include")
     <script>
-        +(function($) {
-            $('[data-replace],[data-before],[data-after],[data-append],[data-prepend]').ajaxInclude({ proxy: '@Url.Action("Proxy","AjaxIncludeExamples", new{wrap= true})&includes=' });
+        +(function ($) {
+            $('[data-replace],[data-before],[data-after],[data-append],[data-prepend]').ajaxInclude({ proxy: '@Url.Action("Proxy", "AjaxIncludeExamples", new { wrap = true })&includes=' });
         })(jQuery);
     </script>
+    @Html.Partial("_PrettyPrintScripts")
 }

@@ -8,7 +8,7 @@ namespace WebPerformanceHelpers.Tests.Web.Controllers
     public class AjaxIncludeExamplesController : Controller
     {
         [Route("proxy")]
-        public ActionResult Proxy(AjaxIncludeProxyRequest proxyRequest, string includes)
+        public ActionResult Proxy(AjaxIncludeProxyRequest proxyRequest)
         {
             return new AjaxIncludeProxyResult(proxyRequest);
         }
