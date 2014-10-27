@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>mvc-web-performance-helpers</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>
+      Ben Embery
+    </authors>
+    <owners>Ben Embery</owners>
+    <!--<licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>-->
+    <projectUrl>http://webperformancehelpers.azurewebsites.net</projectUrl>
+    <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Simple performance helpers are a small toolkit to enable you to enhance the speed of your website focusing on mobile first responsive design</description>
+    <releaseNotes>Initial Package Testing.</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>MVC webperf "Web Performance" "ajax includes" "critical css"</tags>
+  </metadata>
+</package>

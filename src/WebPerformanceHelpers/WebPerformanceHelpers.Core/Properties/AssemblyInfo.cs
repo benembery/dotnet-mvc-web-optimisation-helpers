@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WebPerformanceHelpers.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("MVC Web Performance Helpers")]
+[assembly: AssemblyDescription("Simple performance helpers are a small toolkit to enable you to enhance the speed of your website focusing on mobile first responsive design")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("WebPerformanceHelpers.Core")]
