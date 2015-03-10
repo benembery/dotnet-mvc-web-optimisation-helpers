@@ -58,9 +58,10 @@
     <Compile Include="AjaxInclude\AjaxIncludeProxyRequest.cs" />
     <Compile Include="AjaxInclude\AjaxIncludeProxyResult.cs" />
     <Compile Include="Annotations\JetBrainsResharperAnnotations.cs" />
+    <Compile Include="Bundles\BundleContentRenderer.cs" />
     <Compile Include="Bundles\BundlesContextHelper.cs" />
-    <Compile Include="Bundles\ScriptsHelper.cs" />
-    <Compile Include="Bundles\StylesHelper.cs" />
+    <Compile Include="Bundles\ScriptHelper.cs" />
+    <Compile Include="Bundles\StyleHelper.cs" />
     <Compile Include="AjaxInclude\DefaultAjaxIncludeEngine.cs" />
     <Compile Include="AjaxInclude\IAjaxIncludeRequestEngine.cs" />
     <Compile Include="Extensions\ControllerExtensions.cs" />

@@ -11,7 +11,7 @@ namespace WebPerformanceHelpers.Bundles
         {
             get
             {
-                return _context ?? (HttpContextBase)new HttpContextWrapper(HttpContext.Current);
+                return _context ?? new HttpContextWrapper(HttpContext.Current);
             }
             set
             {
@@ -20,9 +20,8 @@ namespace WebPerformanceHelpers.Bundles
         }
 
         public static BundleContext GetBundleContext(string virtualPath)
-        { 
+        {
             return new BundleContext(Context, BundleTable.Bundles, virtualPath);
         }
-        
     }
 }
