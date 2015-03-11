@@ -1,78 +1,187 @@
 ﻿(function (window, undefined) {
-    var doc = window.document,
-        docEl = window.documentElement,
-        head = doc.head;
-    
-    function insertBefore(el, ref) {
-        ref = ref || doc.getElementsByTagName("script")[0];
-        ref.parentNode.insertBefore(el, ref);
+    "use strict";
+
+    var doc = window.document;
+
+    var utils = {
+        writeCookie: function () {
+
+        },
+        insertBefore: function (el, ref) {
+            ref = ref || doc.getElementsByTagName("script")[0];
+            ref.parentNode.insertBefore(el, ref);
+        },
+        isFunction: function (func) {
+            return func && typeof (func) == "function";
+        }
+
+    };
+
+    var enhance = {};
+
+    var supports = function () {
+        var features = [];
+
+        function registerFeature(featureName, support) {
+            features[featureName] = support;
+        }
+
+        registerFeature('querySelector', 'querySelector' in doc);
+        registerFeature('async', 'async' in document.createElement('script'));
+
+        return function (feature) {
+            return features[feature] || false;
+        }
+    }();
+
+    enhance.supports = supports;
+
+    function loadCSS(href, before, media) {
+        var ss = doc.createElement('link');
+        ss.rel = 'stylesheet';
+        ss.href = href;
+        ss.media = 'only x';
+
+        var sheets = doc.styleSheets;
+        utils.insertBefore(ss);
+
+        function toggleMedia() {
+            for (var i = 0; i < sheets.length; i++) {
+                if (sheets[i].href && sheets[i].href.indexOf(href) > -1) {
+                    ss.media = media || "all";
+                    return;
+                }
+            }
+            setTimeout(toggleMedia);
+        }
+
+        toggleMedia();
+        return ss;
     }
 
-    window.enhance = {
-        loadCSS: function(href,before,media) {
-            var ss = doc.createElement('link');
-            ss.rel = 'stylesheet';
-            ss.href = href;
-            ss.media = 'only x';
+    enhance.loadCSS = loadCSS;
 
-            var sheets = doc.styleSheets;
-            insertBefore(ss);
-            
-            function toggleMedia() {
-                var defined;
-                for (var i = 0; i < sheets.length; i++) {
-                    if (sheets[i].href && sheets[i].href.indexOf(href) > -1) {
-                        defined = true;
-                    }
-                }
-                if (defined) {
-                    ss.media = media || 'all';
-                }
-                else {
-                    setTimeout(toggleMedia);
-                }
+    function loadJS(src, onload, onfail, timeout) {
+        var script = doc.createElement('script'),
+            fail,
+            gate = false;
+
+        script.async = true;
+       
+        if (utils.isFunction(onfail))
+            fail = setTimeout(onfail, timeout);
+
+        if (utils.isFunction(onload))
+            script.onload = script.onreadystatechange = function () {
+                var state = this.readyState;
+
+                if (gate || state && state != "complete" && state != "loaded")
+                    return;
+
+                gate = true;
+                script.onload = script.onreadystatechange == null;
+
+                if (fail)
+                    clearTimeout(fail);
+
+                onload(this);
             }
+        
+        script.src = src;
+        utils.insertBefore(script);
+    }
 
-            toggleMedia();
-            return ss;
+    enhance.loadJS = loadJS;
+
+    function getMeta(metaName) {
+        var metas = doc.getElementsByTagName("meta");
+        var meta;
+        for (var i = 0; i < metas.length; i++) {
+            if (metas[i].name && metas[i].name === metaName) {
+                meta = metas[i];
+                break;
+            }
+        }
+        return meta;
+    }
+
+    enhance.getMeta = getMeta;
+
+    var cookie = {
+        get: function(name) {
+            if (!name)
+                return null;
+
+            var cookiestring = "; " + doc.cookie;
+            var _cookies = cookiestring.split("; " + name + "=");
+
+            return (_cookies.length == 2) ? _cookies.pop().split(";").shift() : null;
         },
-        loadJS: function(src, onload) {
-            var script = doc.createElement('script');
-            script.src = src;
-            script.async = true;
-            if (onload && typeof(onload) == 'function') {
-                script.onload = script.onreadystatechange = onload;
-            }
+        set: function(name, value, days) {
+            if (!name || !days)
+                return;
 
-            insertBefore(script);
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = date.toUTCString();
+
+            doc.cookie = name + "=; expires = " + expires + "; path=/";
+        },
+        expire: function(name) {
+            this.set(name, false, -1);
+        },
+        enabled: function() {
+            if (window.navigator.cookieEnabled) return true;
+            var value = '_';
+            var ret = cookie.set(value, value).get(value) === value;
+            cookie.expire(value);
+            return ret;
         }
     };
 
+    enhance.cookie = cookie;
+    
+    var loadJsPipeline = function () {
+        var pipeline = [];
 
-}(window));
+        function executeStep() {
+            var src,
+            step = pipeline.shift(),
+            stepCount = step.length,
+            loadedCount = 0;
 
-(function(d, window) {
-    var config = {
-            kitId: 'alo0rxc',
-            scriptTimeout: 3000
-        },
-        h = d.documentElement,
-        t = setTimeout(function() {
-            h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
-        }, config.scriptTimeout),
-        f = false,
-        a;
+            while (src = step.shift()) {
+                loadJS(src,
+                function () {
+                    loadedCount++;
 
-    window.enhance.loadJS('//use.typekit.net/' + config.kitId + '.js', function() {
-        a = this.readyState;
-        if (f || a && a != "complete" && a != "loaded") return;
-        f = true;
-        clearTimeout(t);
-        try {
-            Typekit.load(config);
-        } catch (e) {
+                    if (loadedCount === stepCount && pipeline.length > 0)
+                        executeStep();
+                });
+            }
         }
-    });
-        h.className += " wf-loading";
-       
-})(document, window);
+
+        return function (srcFiles) {
+            pipeline = srcFiles.split('|');
+            
+            for (var i = 0; i < pipeline.length; i++)
+                pipeline[i] = pipeline[i].split(',');
+
+            if (pipeline.length == 0)
+                return;
+
+            executeStep();
+        }
+    }();
+
+    enhance.loadJsPipeline = loadJsPipeline;
+
+
+
+    var globalJS = '/bundles/js/jquery,/scripts/tests/a.js,/scripts/tests/b.js|/scripts/tests/1.js,/scripts/tests/2.js,/scripts/tests/3.js';
+    var pageJs = '';
+    loadJsPipeline(globalJS);
+    
+
+    window.enhance = enhance;
+}(window));

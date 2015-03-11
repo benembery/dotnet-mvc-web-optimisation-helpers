@@ -101,6 +101,11 @@
     <None Include="Properties\PublishProfiles\webperformancehelpers - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\webperformancehelpers - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\tests\b.js" />
+    <Content Include="Scripts\tests\a.js" />
+    <Content Include="Scripts\tests\3.js" />
+    <Content Include="Scripts\tests\2.js" />
+    <Content Include="Scripts\tests\1.js" />
     <Content Include="Scripts\filament-group\ajaxInclude.js" />
     <Content Include="Scripts\filament-group\ajaxInclude.min.js" />
     <Content Include="Scripts\filament-group\ajaxIncludePlugins.js" />
@@ -116,6 +121,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\loader.js" />
+    <Content Include="Scripts\loaderinit.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

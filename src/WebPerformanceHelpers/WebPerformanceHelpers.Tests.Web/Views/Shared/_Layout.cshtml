@@ -7,9 +7,10 @@
     
     
     @* Progressive Enhancement *@
-    <meta name="fullcss" content="@Url.Content("~/bundles/css")">
+    
     @if (!Request.Cookies.AllKeys.Contains("fullcss"))
     {
+        <meta name="fullcss" content="@Url.Content("~/bundles/css")">
         @StyleHelper.RenderStyleInline("~/bundles/critical-css")
         <noscript>
             @Styles.Render("~/bundles/css")
@@ -19,9 +20,8 @@
     {
         @Styles.Render("~/bundles/css")
     }
-
-    <meta name="fulljs" content="@Url.Content("~/bundles/js")">
-    @ScriptHelper.RenderScriptInline("~/bundles/js/enhance")
+   
+    @ScriptHelper.RenderScriptInline("~/bundles/js")
     
 </head>
 <body>
