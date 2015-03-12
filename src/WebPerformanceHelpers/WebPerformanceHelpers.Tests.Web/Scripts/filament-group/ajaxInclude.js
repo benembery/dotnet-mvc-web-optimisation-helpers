@@ -106,10 +106,11 @@
 					var content = data,
 						targetEl = target ? $( target ) : el;
 
-					if( o.proxy ){
-						var subset = content.match( new RegExp( "<entry url=[\"']?" + el.data( "url" ) + "[\"']?>(?:(?!</entry>)(.|\n))*", "gmi" ) );
-						if( subset ){
-							content = subset[ 0 ];
+					if (o.proxy) {
+					    var opentag = "<entry url=[\"']?" + el.data("url") + "[\"']?>";
+					    var subset = content.match(new RegExp(opentag + "(?:(?!</entry>)(.|\n))*", "gmi"));
+						if (subset) {
+						    content = subset[0].replace(new RegExp(opentag), '');
 						}
 					}
 					
@@ -120,8 +121,11 @@
 					}
 
 					if( method === 'replaceWith' ) {
-						el.trigger( "ajaxInclude", [ content ] );
-						targetEl[ el.data( "method" ) ]( content );
+						//el.trigger( "ajaxInclude", [ content ] );
+						//targetEl[ el.data( "method" ) ]( content );
+						var $content = $(content);
+						targetEl[el.data("method")]($content);
+						$content.trigger("ajaxInclude", [content]);
 					} else {
 						targetEl[ el.data( "method" ) ]( content );
 						el.trigger( "ajaxInclude", [ content ] );

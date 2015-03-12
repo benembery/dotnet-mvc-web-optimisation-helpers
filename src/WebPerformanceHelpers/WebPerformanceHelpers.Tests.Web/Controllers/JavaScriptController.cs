@@ -13,12 +13,6 @@ namespace WebPerformanceHelpers.Tests.Web.Controllers
             return View();
         }
 
-        [Route("cdn-script-fallback")]
-        public ActionResult CdnScriptFallback()
-        {
-            return View();
-        }
-
         [Route("ajax-include")]
         public ActionResult AjaxIncludes()
         {
