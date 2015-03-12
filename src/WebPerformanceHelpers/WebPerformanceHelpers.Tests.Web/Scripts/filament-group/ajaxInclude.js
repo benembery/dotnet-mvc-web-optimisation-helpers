@@ -107,10 +107,9 @@
 						targetEl = target ? $( target ) : el;
 
 					if (o.proxy) {
-					    var opentag = "<entry url=[\"']?" + el.data("url") + "[\"']?>";
-					    var subset = content.match(new RegExp(opentag + "(?:(?!</entry>)(.|\n))*", "gmi"));
-						if (subset) {
-						    content = subset[0].replace(new RegExp(opentag), '');
+					    var subset = new RegExp("<entry url=[\"']?" + el.data("url") + "[\"']?>((?:(?!</entry>)(.|\n))*)", "gmi").exec(content);
+					    if (subset) {
+						    content = subset[1];
 						}
 					}
 					

@@ -65,9 +65,7 @@
         var script = doc.createElement('script'),
             fail,
             gate = false;
-
-        script.async = true;
-       
+        
         if (utils.isFunction(onfail))
             fail = setTimeout(onfail, timeout);
 
@@ -87,6 +85,7 @@
                 onload(this);
             }
         
+        script.async = true;
         script.src = src;
         utils.insertBefore(script);
     }
@@ -175,13 +174,6 @@
     }();
 
     enhance.loadJsPipeline = loadJsPipeline;
-
-
-
-    var globalJS = '/bundles/js/jquery,/scripts/tests/a.js,/scripts/tests/b.js|/scripts/tests/1.js,/scripts/tests/2.js,/scripts/tests/3.js';
-    var pageJs = '';
-    loadJsPipeline(globalJS);
-    
 
     window.enhance = enhance;
 }(window));

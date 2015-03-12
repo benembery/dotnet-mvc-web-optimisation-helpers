@@ -23,22 +23,21 @@
         h = document.documentElement;
     
     _e.loadJS('//use.typekit.net/' + config.kitId + '.js',
-        function () {
-            try {
-                Typekit.load(config);
-                cookie.set('typekit', 'true', 7);
-            } catch (e) { }
-        },
-        function () {
-            h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
-        },
+        function () { try { Typekit.load(config); } catch (e) { } },
+        function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; },
         config.scriptTimeout);
+
     h.className += " wf-loading";
 
     //Bye bye old browsers
     if (!_e.supports('querySelector'))
         return;
+    
 
+    //TODO Update to pull from meta.
+    var globalJS = '/bundles/js/jquery,/scripts/tests/a.js,/scripts/tests/b.js|/scripts/tests/1.js,/scripts/tests/2.js,/scripts/tests/3.js';
+
+    loadJsPipeline(globalJS);
     
 
 
