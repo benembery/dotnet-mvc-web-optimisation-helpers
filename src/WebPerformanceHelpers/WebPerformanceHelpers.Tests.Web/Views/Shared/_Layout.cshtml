@@ -11,7 +11,7 @@
     @if (!Request.Cookies.AllKeys.Contains("fullcss"))
     {
         <meta name="fullcss" content="@Url.Content("~/bundles/css")">
-        @StyleHelper.RenderStyleInline("~/bundles/critical-css")
+        @StyleHelper.RenderStyleInline("~/bundles/css/critical")
         <noscript>
             @Styles.Render("~/bundles/css")
         </noscript>
@@ -28,6 +28,7 @@
     <header class="header">
         <div class="container">
             <h1>ASP.NET Web Optimisation Helpers</h1>
+            <p class="lead">&ldquo;Making <abbr title="Responsive Web Design">RWD</abbr> sites load fast as heck&rdquo;</p>
             <a href="https://github.com/benembery/dotnet-web-optimisation-helpers" class="btn">View on GitHub</a>
         </div>
     </header>

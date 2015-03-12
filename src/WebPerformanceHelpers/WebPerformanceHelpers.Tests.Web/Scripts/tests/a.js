@@ -1,3 +1,4 @@
-﻿(function() {
-    console.log('a');
+﻿(function () {
+    if ("console" in window)
+        console.log('a');
 }());

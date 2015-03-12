@@ -3,11 +3,16 @@
 }
 <section>
     <h1>Inline Critical CSS</h1>
-    <p>As recommende by google</p>
-    <pre class="prettyprint linenums lang-css">
-@Html.Encode(StyleHelper.RenderStyleInline("~/bundles/css"))</pre>
+    <blockquote>
+        <p>
+            &ldquo;Before the browser can render content it must process all the style and layout information for the current page. As a result, the browser will block rendering until external stylesheets are downloaded and processed.&rdquo;
+        </p>
+        <a href="https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery">Google Developer Page Speed Insights</a>
+    </blockquote>
+    <p>The recommended solution is to build a set of critical css that is inlined on the page and later include the full CSS in a non blocking manner using JavaScript</p>
+    <p>The following extension to the web optimisation framework will output an optimised and minfied version of your bundle inline.</p>
+    <pre class="prettyprint linenums lang-css">@Html.Encode(StyleHelper.RenderStyleInline("~/bundles/css/critical"))</pre>
 </section>
-
 @section Scripts
 {
     @Html.Partial("_PrettyPrintScripts")

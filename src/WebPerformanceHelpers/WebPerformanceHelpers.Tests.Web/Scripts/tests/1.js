@@ -1,3 +1,4 @@
-﻿$(function() {
-    console.log(1);
+﻿$(function () {
+    if ("console" in window)
+        console.log(1);
 });

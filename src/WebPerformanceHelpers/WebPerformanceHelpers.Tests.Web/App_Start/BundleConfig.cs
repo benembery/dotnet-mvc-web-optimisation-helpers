@@ -8,7 +8,7 @@ namespace WebPerformanceHelpers.Tests.Web.App_Start
         {
             bundles.UseCdn = true;
 
-            bundles.Add(new StyleBundle("~/bundles/critical-css")
+            bundles.Add(new StyleBundle("~/bundles/css/critical")
                 .Include("~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/bundles/css")
