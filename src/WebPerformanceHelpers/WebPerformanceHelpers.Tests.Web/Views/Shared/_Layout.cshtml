@@ -4,10 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - ASP.NET Web Optimisation Helpers</title>
-    
-    
-    @* Progressive Enhancement *@
-    
+    @* Progressive asset loading *@
     @if (!Request.Cookies.AllKeys.Contains("fullcss"))
     {
         <meta name="fullcss" content="@Url.Content("~/bundles/css")">
@@ -20,9 +17,8 @@
     {
         @Styles.Render("~/bundles/css")
     }
-   
+    <meta name="jsdeps" content="/bundles/js/jquery,/scripts/tests/a.js,/scripts/tests/b.js|/scripts/tests/1.js,/scripts/tests/2.js,/scripts/tests/3.js" />
     @ScriptHelper.RenderScriptInline("~/bundles/js")
-    
 </head>
 <body>
     <header class="header">

@@ -1,7 +1,8 @@
 ﻿(function (document, window) {
 
-    var cssMetaName = 'fullcss';
-    var _e = window.enhance;    
+    var cssMetaName = 'fullcss',
+        jsMetaName = 'jsdeps',
+        _e = window.enhance;
 
     //
     // Load Full CSS
@@ -35,10 +36,8 @@
     
 
     //TODO Update to pull from meta.
-    var globalJS = '/bundles/js/jquery,/scripts/tests/a.js,/scripts/tests/b.js|/scripts/tests/1.js,/scripts/tests/2.js,/scripts/tests/3.js';
-
-    loadJsPipeline(globalJS);
-    
-
-
+    var jsMeta = _e.getMeta(jsMetaName);
+    if (jsMeta) {
+        _e.loadJsPipeline(jsMeta.content);
+    }
 }(document, window));
