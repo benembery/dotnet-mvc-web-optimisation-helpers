@@ -100,6 +100,9 @@
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\webperformancehelpers - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\webperformancehelpers - Web Deploy.pubxml" />
+    <Content Include="Scripts\filament-group\ajaxInclude.min.js.map">
+      <DependentUpon>ajaxInclude.min.js</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\tests\b.js" />
     <Content Include="Scripts\tests\a.js" />

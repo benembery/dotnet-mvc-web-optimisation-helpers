@@ -106,25 +106,20 @@
 					var content = data,
 						targetEl = target ? $( target ) : el;
 
-					if (o.proxy) {
-					    var subset = new RegExp("<entry url=[\"']?" + el.data("url") + "[\"']?>((?:(?!</entry>)(.|\n))*)", "gmi").exec(content);
-					    if (subset) {
-						    content = subset[1];
-						}
-					}
-					
-					var filteredContent = el.triggerHandler( "ajaxIncludeFilter", [ content ] );
+			        if (o.proxy) {
+			            var subset = new RegExp("<entry url=[\"']?" + el.data("url") + "[\"']?>((?:(?!</entry>)(.|\n))*)", "gmi").exec(content);
+			            content = (subset) ? subset[1] : '';
+			        }
+
+			        var filteredContent = el.triggerHandler( "ajaxIncludeFilter", [ content ] );
 					
 					if( filteredContent ){
 						content = filteredContent;
 					}
 
 					if( method === 'replaceWith' ) {
-						//el.trigger( "ajaxInclude", [ content ] );
-						//targetEl[ el.data( "method" ) ]( content );
-						var $content = $(content);
-						targetEl[el.data("method")]($content);
-						$content.trigger("ajaxInclude", [content]);
+						el.trigger( "ajaxInclude", [ content ] );
+						targetEl[ el.data( "method" ) ]( content );
 					} else {
 						targetEl[ el.data( "method" ) ]( content );
 						el.trigger( "ajaxInclude", [ content ] );

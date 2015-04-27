@@ -8,12 +8,12 @@ namespace WebPerformanceHelpers.AjaxInclude
 {
     public class WebClientAjaxIncludeEngine : AjaxIncludeEngineBase, IAjaxIncludeRequestEngine
     {
-        public string ExecuteRequest(AjaxIncludeProxyRequest request, ControllerContext context)
+        public string ExecuteRequest(AjaxIncludeProxyRequest request, ControllerContext proxyControllerContext, int requestLimit)
         {
-            if (request == null || !request.RequestsList.Any())
+            if (request == null || !request.RequestsList.Any() || request.RequestsList.Count > requestLimit)
                 return null;
 
-            var httpRequest = context.RequestContext.HttpContext.Request;
+            var httpRequest = proxyControllerContext.RequestContext.HttpContext.Request;
 
             if (httpRequest == null)
                 return null;

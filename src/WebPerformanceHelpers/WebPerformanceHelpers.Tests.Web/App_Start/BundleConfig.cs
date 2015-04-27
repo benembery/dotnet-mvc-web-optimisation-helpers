@@ -25,10 +25,8 @@ namespace WebPerformanceHelpers.Tests.Web.App_Start
 
 
             jQuery.CdnFallbackExpression = "window.jQuery";
-
             bundles.Add(jQuery);
-
-
+            
             bundles.Add(new ScriptBundle("~/bundles/js/ajax-include")
                 .Include(new[] { "~/Scripts/filament-group/ajaxInclude.js", "~/Scripts/filament-group/ajaxIncludePlugins.js" }));
 

@@ -54,6 +54,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AjaxInclude\AjaxIncludeActionAttribute.cs" />
+    <Compile Include="AjaxInclude\AjaxIncludeConstants.cs" />
     <Compile Include="AjaxInclude\AjaxIncludeEngineBase.cs" />
     <Compile Include="AjaxInclude\AjaxIncludeProxyRequest.cs" />
     <Compile Include="AjaxInclude\AjaxIncludeProxyResult.cs" />
@@ -62,7 +64,7 @@
     <Compile Include="Bundles\BundlesContextHelper.cs" />
     <Compile Include="Bundles\ScriptHelper.cs" />
     <Compile Include="Bundles\StyleHelper.cs" />
-    <Compile Include="AjaxInclude\DefaultAjaxIncludeEngine.cs" />
+    <Compile Include="AjaxInclude\MvcAjaxIncludeEngine.cs" />
     <Compile Include="AjaxInclude\IAjaxIncludeRequestEngine.cs" />
     <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Extensions\RequestExtensions.cs" />
