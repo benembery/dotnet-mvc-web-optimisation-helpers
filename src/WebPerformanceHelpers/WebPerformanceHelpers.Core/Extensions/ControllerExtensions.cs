@@ -1,12 +1,12 @@
 ﻿using System.IO;
 using System.Web.Mvc;
-using WebPerformanceHelpers.Annotations;
+using JetBrains.Annotations;
 
 namespace WebPerformanceHelpers.Extensions
 {
     public static class RenderViewExtensions
     {
-        public static string RenderVew(this ControllerContext controllerContext, [AspMvcView]string viewName, [AspMvcModelType]object model)
+        public static string RenderView(this ControllerContext controllerContext, [AspMvcView]string viewName, [AspMvcModelType]object model)
         {
             return RenderView(controllerContext.Controller, viewName, model, false);
         }

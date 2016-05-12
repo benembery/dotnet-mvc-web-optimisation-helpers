@@ -25,13 +25,7 @@ namespace WebPerformanceHelpers.AjaxInclude
         public override void ExecuteResult(ControllerContext context)
         {
             var response = _engine.ExecuteRequest(_request, context, _requestLimit);
-
-            if (string.IsNullOrWhiteSpace(response))
-            {
-                new EmptyResult().ExecuteResult(context);
-                return;
-            }
-
+            context.RequestContext.HttpContext.Response.Clear();
             context.RequestContext.HttpContext.Response.ContentType = "text/html";
             context.RequestContext.HttpContext.Response.Write(response);
         }

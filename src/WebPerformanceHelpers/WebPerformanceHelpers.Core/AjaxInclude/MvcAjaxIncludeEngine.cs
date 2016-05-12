@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebPerformanceHelpers.Extensions;
 
 namespace WebPerformanceHelpers.AjaxInclude
 {
@@ -34,22 +33,19 @@ namespace WebPerformanceHelpers.AjaxInclude
                 using (var responseWriter = new StringWriter())
                 {
                     var uri = new Uri(host, requestUrl);
-                    //var responseWriter = new StringWriter();
                     var requestHttpContext = BuildRequest(uri, responseWriter);
-
                     var controllerName = requestHttpContext.Request.RequestContext.RouteData.GetRequiredString("controller");
                     var controller = factory.CreateController(requestHttpContext.Request.RequestContext, controllerName);
 
                     if (IsValidRequest(requestHttpContext, controller))
                         controller.Execute(requestHttpContext.Request.RequestContext);
-                    
+
                     response += request.Wrap
                             ? WrapInTag(responseWriter.ToString(), requestUrl)
                             : responseWriter.ToString();
 
                     factory.ReleaseController(controller);
                 }
-                //responseWriter.Dispose();
             }
 
             return response;
@@ -64,12 +60,13 @@ namespace WebPerformanceHelpers.AjaxInclude
         private bool IsValidRequest(HttpContextBase httpContext, IController controller)
         {
             var controllerContext = new ControllerContext(httpContext.Request.RequestContext, controller as ControllerBase);
-            var action = new ReflectedControllerDescriptor(typeof(Controller)).FindAction(controllerContext,
+            var action = new ReflectedControllerDescriptor(controller.GetType()).FindAction(controllerContext,
                        httpContext.Request.RequestContext.RouteData.GetRequiredString("action"));
 
-            var attributes = action.GetCustomAttributes(typeof(AjaxIncludeActionAttribute), true);
+            if (action == null)
+                return false;
 
-            return attributes.Length > 0;
+            return action.GetCustomAttributes(typeof(AjaxIncludeActionAttribute), true).Length > 0;
         }
 
         /// <summary>
@@ -85,7 +82,7 @@ namespace WebPerformanceHelpers.AjaxInclude
                 || context.RequestContext.HttpContext.Request == null)
                 return null;
 
-            return context.RequestContext.HttpContext.Request.GetAbsoluteHost();
+            return GetAbsoluteHost(context.RequestContext.HttpContext.Request);
         }
 
         /// <summary>
@@ -112,7 +109,5 @@ namespace WebPerformanceHelpers.AjaxInclude
 
             return contextBase;
         }
-
-
     }
 }
