@@ -19,7 +19,7 @@ namespace WebPerformanceHelpers.Bundles
         public override void ExecuteResult(ControllerContext context)
         {
             BundleTable.Bundles.RegisterDynamicBundleIfNotExists(_virtualPath, _bundleFiles, _dynamicBundleBuilder);
-            DynamicBundleHelper.RenderBundle(context, _virtualPath);
+            context.RenderBundle(_virtualPath);
         }
 
     }

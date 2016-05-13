@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>mvc-web-performance-helpers</id>
+    <id>benembery-web-performance-helpers-for-mvc</id>
     <version>$version$</version>
-    <title>$title$</title>
+    <title>Web Performance Helpers for ASP.NET MVC</title>
     <authors>
       Ben Embery
     </authors>

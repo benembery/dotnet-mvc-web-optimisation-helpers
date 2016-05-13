@@ -65,11 +65,10 @@
     <Compile Include="Bundles\DynamicBundleHelper.cs" />
     <Compile Include="Bundles\DynamicScriptBundleResult.cs" />
     <Compile Include="Bundles\ScriptHelper.cs" />
-    <Compile Include="Bundles\ScriptsHtmlHelper.cs" />
     <Compile Include="Bundles\StyleHelper.cs" />
     <Compile Include="AjaxInclude\MvcAjaxIncludeEngine.cs" />
     <Compile Include="AjaxInclude\IAjaxIncludeRequestEngine.cs" />
-    <Compile Include="Extensions\ControllerExtensions.cs" />
+    <Compile Include="Extensions\RenderViewExtensions.cs" />
     <Compile Include="Extensions\RequestExtensions.cs" />
     <Compile Include="Extensions\RouteDataExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
