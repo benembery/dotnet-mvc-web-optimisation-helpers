@@ -71,6 +71,7 @@
     <Compile Include="AjaxInclude\IAjaxIncludeRequestEngine.cs" />
     <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Extensions\RequestExtensions.cs" />
+    <Compile Include="Extensions\RouteDataExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

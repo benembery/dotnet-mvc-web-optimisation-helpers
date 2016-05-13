@@ -1,8 +1,10 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Web;
 using System.Web.Mvc;
+using WebPerformanceHelpers.Extensions;
 
 namespace WebPerformanceHelpers.AjaxInclude
 {
@@ -59,9 +61,10 @@ namespace WebPerformanceHelpers.AjaxInclude
         /// <returns></returns>
         private bool IsValidRequest(HttpContextBase httpContext, IController controller)
         {
-            var controllerContext = new ControllerContext(httpContext.Request.RequestContext, controller as ControllerBase);
-            var action = new ReflectedControllerDescriptor(controller.GetType()).FindAction(controllerContext,
-                       httpContext.Request.RequestContext.RouteData.GetRequiredString("action"));
+            var requestCtx = httpContext.Request.RequestContext;
+
+            var controllerContext = new ControllerContext(requestCtx, controller as ControllerBase);
+            var action = new ReflectedControllerDescriptor(controller.GetType()).FindAction(controllerContext, requestCtx.RouteData.GetActionName());
 
             if (action == null)
                 return false;
@@ -102,9 +105,9 @@ namespace WebPerformanceHelpers.AjaxInclude
 
             //Build and assign route data.
             var routeData = System.Web.Routing.RouteTable.Routes.GetRouteData(contextBase);
-            if (routeData != null)
-                routeData.DataTokens.Add(AjaxIncludeConstants.AjaxIncludeKeyName, AjaxIncludeConstants.AjaxIncludeKey);
 
+            routeData.AddAjaxIncludeDataTokens();
+            
             request.RequestContext.RouteData = routeData;
 
             return contextBase;
